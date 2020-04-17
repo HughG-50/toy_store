@@ -1,0 +1,7 @@
+<ul>
+    <%# for toy in @toys %>
+    <% @toys.each do |toy| %>
+        <li>Toy name: <%= toy["name"]%> Description: <%= toy["description"]%></li>
+        <li>Date posted: <%= toy["date_posted"]%> User: <%= toy["user"]%></li>
+    <% end %>
+</ul>
