@@ -25,6 +25,10 @@ def random_character
     return[Faker::DcComics.hero, Faker::DcComics.heroine, Faker::DcComics.villain, Faker::DcComics.name].sample
 end
 
+def random_manufacturer
+    return["Mattel", "Hasbro", "Lego"].sample
+end
+
 for i in 1..total_users
     User.create(
         email: "#{Faker::Name.first_name}@toy_store.com",
@@ -34,7 +38,8 @@ end
 
 for i in 1..total_manufacturers
     Manufacturer.create(
-        
+        name: random_manufacturer(),
+        location: Faker::Nation.capital_city
     )
 end
 
@@ -43,7 +48,7 @@ for i in 1..total_toys
         name: random_character(),
         description: Faker::DcComics.title,
         date_posted: Time.now,
-        user_id: Faker::Number.between(from: 1, to: total_users)
+        user_id: Faker::Number.between(from: 1, to: total_users),
         manufacturer_id: Faker::Number.between(from: 1, to: total_manufacturers)
     )
 end
