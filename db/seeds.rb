@@ -19,6 +19,7 @@
 
 total_users = 14
 total_toys = 80
+total_manufacturers = 5
 
 def random_character
     return[Faker::DcComics.hero, Faker::DcComics.heroine, Faker::DcComics.villain, Faker::DcComics.name].sample
@@ -31,11 +32,18 @@ for i in 1..total_users
     )
 end
 
+for i in 1..total_manufacturers
+    Manufacturer.create(
+        
+    )
+end
+
 for i in 1..total_toys
     Toy.create(
         name: random_character(),
         description: Faker::DcComics.title,
         date_posted: Time.now,
         user_id: Faker::Number.between(from: 1, to: total_users)
+        manufacturer_id: Faker::Number.between(from: 1, to: total_manufacturers)
     )
 end
