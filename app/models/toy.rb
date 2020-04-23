@@ -5,4 +5,5 @@ class Toy < ApplicationRecord
     has_one :manufacturer, dependent: :destroy
     has_many :toys_categories
     has_many :categories, through: :toys_categories
+    has_many :images, as: :imageable
 end
